@@ -59,3 +59,6 @@ Style/WordArray:
 Style/RegexpLiteral:
   EnforcedStyle: slashes
   AllowInnerSlashes: true
+  
+Rails/LexicallyScopedActionFilter: 
+  Enabled: false
