@@ -31,7 +31,7 @@
   :enabled: true
   :severity: :error
   :includes:
-    - "\[DEV-\d+\] (Fix|Add|Update|Remove|Refactor)"
+    - "\\[DEV-\\d+\\] (Fix|Add|Update|Remove|Refactor)"
   :excludes:
     - "[wW][iI][pP]"
     - "\\w[tT]h?ing"
