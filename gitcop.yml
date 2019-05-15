@@ -27,3 +27,12 @@
     - "/\\bquite\\b/"
     - "/as\\sfar\\sas\\s.+\\sconcerned/"
     - "/of\\sthe\\s(fact|opinion)\\sthat/"
+:commit_subject_prefix:
+  :enabled: true
+  :severity: :error
+  :includes:
+    - "\[DEV-\d+\] (Fix|Add|Update|Remove|Refactor)"
+  :excludes:
+    - "[wW][iI][pP]"
+    - "\\w[tT]h?ing"
+    - "\\w[yY]oke\\w"
