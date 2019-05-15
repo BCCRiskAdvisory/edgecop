@@ -4,39 +4,54 @@ set -o nounset
 set -o errexit
 set -o pipefail
 
+function version_gt() { test "$(printf '%s\n' "$@" | sort -V | head -n 1)" != "$1"; }
+
+echo "=============== Checking for git cop"
+
 if $(gem list git-cop -i) ;
 then
-  echo "=============== Git cop already installed"
+  echo "Git cop already installed"
 else
-  echo "=============== Installing git cop..."
+  echo "Installing git cop..."
   gem install git-cop
 fi
 
 
-echo "=============== Fetching git-cop configuration..."
-mkdir -p ~/.config/git-cop/hooks
-curl https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/master/gitcop.yml > ~/.config/git-cop/configuration.yml
+echo "=============== Checking git version"
+GIT_VERSION=$(git --version | sed 's/[[:alpha:]|(|[:space:]]//g')
+if version_gt 2.10.0 $GIT_VERSION ; then
+  echo "You have ${GIT_VERSION} installed, but this script requires version 2.9 or higher! Please update your git version and rerun this script."
+  exit 1
+else
+  echo "Git version ok"
+fi
 
+
+echo "=============== Checking git hooks configuration"
+if git config --global core.hooksPath ; then
+  if [ $(git config --global core.hooksPath) == "~/.config/git-hooks" ]; then
+    echo "Git global hooks already configured correctly"
+  else
+    echo "Git global hooks have an unexpected configuration"
+    echo "You might need to modify your commit hooks manually"
+  fi
+else
+  echo "Configuring git global hooks to point to ~/.config/git-hooks"
+  git config --global core.hooksPath "~/.config/git-hooks"
+  echo 
+fi
+
+echo "=============== Fetching git-cop configuration"
+mkdir -p ~/.config/git-cop/hooks
+curl --silent https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/master/gitcop.yml > ~/.config/git-cop/configuration.yml
 
 echo "=============== Fetching hook scripts"
 mkdir -p ~/.config/git-hooks
-curl https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/master/hooks/commit-msg.sh > ~/.config/git-hooks/commit-msg.sh
+curl --silent https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/master/hooks/commit-msg.sh > ~/.config/git-hooks/commit-msg
+chmod a+x ~/.config/git-hooks/commit-msg
 
 
-if $(grep -q "\[core\]" ~/.gitconfig) && $(grep -q "hooksPath" ~/.gitconfig) ;
-then
-  echo "=============== It looks like you already have a hooksPath configured in ~/.gitconfig
 
-This script won't change your existing config, but it's expecting ~/.gitconfig to contain the following:
-
-[core]
-  hooksPath = ~/.config/git-hooks
-"
-else
-  echo "configuring global hooks for git"
-  echo "[core]
-  hooksPath = ~/.config/git-hooks" >> ~/.gitconfig
-fi
 
 
 

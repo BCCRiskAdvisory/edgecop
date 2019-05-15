@@ -10,4 +10,6 @@ if ! command -v git-cop > /dev/null; then
    exit 1
 fi
 
+curl --silent https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/master/gitcop.yml > ~/.config/git-cop/configuration.yml
+
 git-cop --hook --commit-message "${BASH_ARGV[0]}"
