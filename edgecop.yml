@@ -32,9 +32,6 @@ Rails:
 Rails/HttpStatus:
   EnforcedStyle: numeric
 
-Performance/Casecmp:
-  Enabled: false
-
 Style/DateTime:
   Enabled: false
 
