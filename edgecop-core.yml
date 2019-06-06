@@ -1,0 +1,48 @@
+
+AllCops:
+  TargetRubyVersion: 2.6.1
+  Exclude:
+  - 'db/**/*'
+  - 'config/**/*'
+  - 'script/**/*'
+  - 'bin/{rails,rake}'
+
+Layout/CommentIndentation:
+  Exclude:
+  - 'Gemfile'
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+Metrics/BlockLength:
+  Exclude:
+  - 'Gemfile'
+  - 'spec/**/*'
+
+Metrics/LineLength:
+  Max: 100
+
+Style/DateTime:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedStyle: hash_rockets
+
+Style/ModuleFunction:
+  EnforcedStyle: extend_self
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/WordArray:
+  EnforcedStyle: brackets
+
+Style/RegexpLiteral:
+  EnforcedStyle: slashes
+  AllowInnerSlashes: true

@@ -1,0 +1,14 @@
+require: rubocop-rails
+
+Rails:
+  Enabled: true
+
+Rails/DynamicFindBy:
+  Exclude:
+  - 'spec/**/*'
+
+Rails/HttpStatus:
+  EnforcedStyle: numeric
+
+Rails/LexicallyScopedActionFilter: 
+  Enabled: false
