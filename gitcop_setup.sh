@@ -28,6 +28,18 @@ fi
 
 
 echo "=============== Checking git hook templates configuration"
+if git config --global core.hookspath ; then
+  echo "\e[31mYou have global git hooks configured, to continue you'll need to disable this in favour of using hook templates.\e[0m"
+  echo " Type 'y' to continue"
+  read -n 1 -r CONFIRM
+  if [[ $CONFIRM =~ ^[Yy]$ ]] ; then
+    git config --global --unset core.hookspath
+  else
+    exit 1
+  fi
+fi
+
+
 if git config --global init.templatedir ; then
   echo "Git hook templates already configured"
   TEMPLATE_DIR=$(git config --global init.templatedir)
@@ -39,10 +51,11 @@ else
 fi
 
 echo "=============== Fetching git-cop configuration"
-mkdir -p ~/.config/git-cop/hooks
+mkdir -p ~/.config/git-cop/hoo00ks
 curl --silent https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/master/gitcop.yml > ~/.config/git-cop/configuration.yml
 
 echo "=============== Fetching hook scripts"
-mkdir -p $TEMPLATE_DIR/hooks
-curl --silent https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/master/hooks/commit-msg.sh > $TEMPLATE_DIR/hooks/commit-msg
-chmod a+x $TEMPLATE_DIR/hooks/commit-msg
+# ~ is only expanded if it appears directly in the shell, if you're quoting it you need to expand it yourself
+mkdir -p ${TEMPLATE_DIR/#~/$HOME}/hooks
+curl --silent https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/master/hooks/commit-msg.sh > ${TEMPLATE_DIR/#~/$HOME}/hooks/commit-msg
+chmod a+x ${TEMPLATE_DIR/#~/$HOME}/hooks/commit-msg
