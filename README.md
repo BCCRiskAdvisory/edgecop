@@ -8,10 +8,11 @@ To use the rubocop config in a project create a .rubocop.yml file in the base di
 inherit_from: https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/master/edgecop.yml
 ```
 
-This file contains configuration for two optional gems - `rubocop-performance` and `rubocop-rails`. If these don't apply to your project you can inherit only the parts you want. The below would be suitable for a plain ruby project:
+This file contains configuration for two optional gems - `rubocop-performance` and `rubocop-rails`.
+If these don't apply to your project you can inherit only the parts you want. The below would be suitable for a plain ruby project:
 
 ```yml
-inherit_from: 
+inherit_from:
   - https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/master/edgecop-core.yml
   - https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/master/edgecop-performance.yml
 ```
@@ -29,3 +30,5 @@ This repo provides a setup script for gitcop. Copy the following command into yo
 ```
 curl https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/master/gitcop_setup.sh | bash -s
 ```
+
+This setup script will populate new repos with you initialize/clone with the git hooks found in your git-template directory. If you want git hooks to run on existing repos, you'll need to cd to the repo directory and run `git-init`.

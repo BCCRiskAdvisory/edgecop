@@ -27,18 +27,15 @@ else
 fi
 
 
-echo "=============== Checking git hooks configuration"
-if git config --global core.hooksPath ; then
-  if [ $(git config --global core.hooksPath) == "~/.config/git-hooks" ]; then
-    echo "Git global hooks already configured correctly"
-  else
-    echo "Git global hooks have an unexpected configuration"
-    echo "You might need to modify your commit hooks manually"
-  fi
+echo "=============== Checking git hook templates configuration"
+if git config --global init.templatedir ; then
+  echo "Git hook templates already configured"
+  TEMPLATE_DIR=$(git config --global init.templatedir)
 else
-  echo "Configuring git global hooks to point to ~/.config/git-hooks"
-  git config --global core.hooksPath "~/.config/git-hooks"
-  echo 
+  echo "Configuring git hook templates to point to ~/.git-templates"
+
+  TEMPLATE_DIR="~/.git-templates"
+  git config --global init.templatedir "$TEMPLATE_DIR"
 fi
 
 echo "=============== Fetching git-cop configuration"
@@ -46,13 +43,6 @@ mkdir -p ~/.config/git-cop/hooks
 curl --silent https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/master/gitcop.yml > ~/.config/git-cop/configuration.yml
 
 echo "=============== Fetching hook scripts"
-mkdir -p ~/.config/git-hooks
-curl --silent https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/master/hooks/commit-msg.sh > ~/.config/git-hooks/commit-msg
-chmod a+x ~/.config/git-hooks/commit-msg
-
-
-
-
-
-
-
+mkdir -p $TEMPLATE_DIR/hooks
+curl --silent https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/master/hooks/commit-msg.sh > $TEMPLATE_DIR/hooks/commit-msg
+chmod a+x $TEMPLATE_DIR/hooks/commit-msg
