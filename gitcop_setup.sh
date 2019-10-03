@@ -59,3 +59,7 @@ echo "=============== Fetching hook scripts"
 mkdir -p ${TEMPLATE_DIR/#~/$HOME}/hooks
 curl --silent https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/master/hooks/commit-msg.sh > ${TEMPLATE_DIR/#~/$HOME}/hooks/commit-msg
 chmod a+x ${TEMPLATE_DIR/#~/$HOME}/hooks/commit-msg
+echo 
+printf "\033[42mHook setup complete.\033[0m You'll need to run `git init` to use these hooks in existing repos.\n"
+
+
