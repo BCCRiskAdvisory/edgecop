@@ -14,13 +14,13 @@ Layout/CommentIndentation:
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
+Layout/LineLength:
+  Max: 100
+
 Metrics/BlockLength:
   Exclude:
   - 'Gemfile'
   - 'spec/**/*'
-
-Metrics/LineLength:
-  Max: 100
 
 Style/DateTime:
   Enabled: false
