@@ -16,10 +16,22 @@ Layout/SpaceInsideHashLiteralBraces:
 Layout/LineLength:
   Max: 100
 
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
+Layout/SpaceAroundMethodCallOperator:
+  Enabled: true
+
 Metrics/BlockLength:
   Exclude:
     - "Gemfile"
     - "spec/**/*"
+
+Style/ExponentialNotation:
+  Enabled: false
+
+Style/SlicingWithRange:
+  Enabled: false
 
 Style/DateTime:
   Enabled: false
