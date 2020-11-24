@@ -31,7 +31,7 @@
   :enabled: true
   :severity: :error
   :includes:
-    - "(\\[(EDGE|WSL|DEV|CORE|SCAN|DOP)-\\d+\\] (Fix|Add|Update|Remove|Refactor|Change|Rollback|Revert))|Merge"
+    - "(\\[(EDGE|WSL|DEV|CORE|SCAN|SCN|DOP)-\\d+\\] (Fix|Add|Update|Remove|Refactor|Change|Rollback|Revert))|Merge"
 :commit_subject_length:
   :enabled: true
   :length: 280
