@@ -52,12 +52,12 @@ fi
 
 echo "=============== Fetching git-cop configuration"
 mkdir -p ~/.config/git-cop/hoo00ks
-curl --silent https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/master/gitcop.yml > ~/.config/git-cop/configuration.yml
+curl --silent https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/main/gitcop.yml > ~/.config/git-cop/configuration.yml
 
 echo "=============== Fetching hook scripts"
 # ~ is only expanded if it appears directly in the shell, if you're quoting it you need to expand it yourself
 mkdir -p ${TEMPLATE_DIR/#~/$HOME}/hooks
-curl --silent https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/master/hooks/commit-msg.sh > ${TEMPLATE_DIR/#~/$HOME}/hooks/commit-msg
+curl --silent https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/main/hooks/commit-msg.sh > ${TEMPLATE_DIR/#~/$HOME}/hooks/commit-msg
 chmod a+x ${TEMPLATE_DIR/#~/$HOME}/hooks/commit-msg
 echo 
 printf "\033[42mHook setup complete.\033[0m You'll need to run `git init` to use these hooks in existing repos.\n"
