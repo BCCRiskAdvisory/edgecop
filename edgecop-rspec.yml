@@ -1,3 +1,15 @@
+require: rubocop-rspec
+
+RSpec/ContextWording:
+  Prefixes:
+    - when
+    - with
+    - without
+    - where
+    - if
+    - unless
+    - for
+
 RSpec/NestedGroups:
   Enabled: false
 
