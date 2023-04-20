@@ -21,3 +21,9 @@ RSpec/MultipleExpectations:
 
 RSpec/LetSetup:
   Enabled: false
+
+RSpec/ExampleLength:
+  Max: 8
+
+RSpec/Rails/HttpStatus:
+  EnforcedStyle: numeric
