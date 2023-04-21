@@ -1,4 +1,5 @@
-inherit_from: 
+inherit_from:
   - https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/main/edgecop-core.yml
   - https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/main/edgecop-performance.yml
   - https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/main/edgecop-rails.yml
+  - https://raw.githubusercontent.com/BCCRiskAdvisory/edgecop/main/edgecop-rspec.yml
