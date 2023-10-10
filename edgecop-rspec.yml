@@ -9,6 +9,7 @@ RSpec/ContextWording:
     - if
     - unless
     - for
+    - on
 
 RSpec/NestedGroups:
   Enabled: false
