@@ -28,6 +28,10 @@ Metrics/BlockLength:
     - "Gemfile"
     - "spec/**/*"
 
+Metrics/ParameterLists:
+  Max: 3
+  CountKeywordArgs: false
+
 Style/ExponentialNotation:
   Enabled: false
 
