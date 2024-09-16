@@ -1,0 +1,4 @@
+require: rubocop-rspec_rails
+
+RSpec/Rails/HttpStatus:
+  EnforcedStyle: numeric
